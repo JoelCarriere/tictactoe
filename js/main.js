@@ -88,7 +88,20 @@ const checkForWin = function(playerMarker, board) {
     return false;
 }
 
-function gameController (playerOneName = "Player1", playerTwoName = "PLayer2") {
+const checkForDraw = function(board) {
+    for (let row of board) {
+        for (let column of board){
+            if (cell.getValue() === 0){
+            return false;
+            }
+        }
+    }
+    return true;
+}
+
+
+
+function gameController (playerOneName = "Player 1", playerTwoName = "Player 2") {
     const board = gameBoard();
 
     const players = [
@@ -122,7 +135,13 @@ function gameController (playerOneName = "Player1", playerTwoName = "PLayer2") {
         
          if (checkForWin(getActivePlayer().marker, board.getBoard())){
             console.log(`Congrats ${getActivePlayer().name} has won!`)
-        }
+            alert(`${getActivePlayer().name} wins`)
+            } 
+        
+        //if (checkForDraw(board.getBoard())){
+        //    console.log(`It's a draw!`);
+        //    alert(`It's a draw, please referesh page to start new game`);
+        //    }
 
         switchPlayer();
         printUpdatedBoard();
